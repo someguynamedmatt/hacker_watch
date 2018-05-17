@@ -1,6 +1,7 @@
 import contextlib
 import sys
 import selenium.webdriver as webdriver
+import time
 from urllib import request as req
 from bs4 import BeautifulSoup as bs
 
@@ -27,22 +28,24 @@ def is_username_found(markup, username):
     return False
 
 if __name__ == "__main__":
-    print(sys.argv)
     if len(sys.argv) < 2:
-        sys.exit('\n[ERROR]: Please supply username to search for. Exiting.\n')
+        sys.exit('\n[ERROR]: Please supply username to search for and number of seconds to reepeat. Exiting.\n')
 
     SITE = 'https://news.ycombinator.com/news'
     USERNAME = sys.argv[1]
+    REPEAT_TIME = float(sys.argv[2])
     SAVE_LOCATION = "./proof.png"
 
-    markup = get_site_markup(SITE)
-    if is_username_found(markup, USERNAME) is True:
-        print('Username found!')
-        initiate_webdriver(SITE, SAVE_LOCATION)
+    def run():
+        markup = get_site_markup(SITE)
+        if is_username_found(markup, USERNAME) is True:
+            print('Username found!')
+            initiate_webdriver(SITE, SAVE_LOCATION)
+            sys.exit('Saved screenshot. My job here is done. Exiting\n')
 
-
-
-
-
-
+    STARTTIME = time.time()
+    while True:
+        print('Checking HackerNews for ' + USERNAME + '\'s post')
+        run()
+        time.sleep(REPEAT_TIME - ((time.time() - STARTTIME) % REPEAT_TIME))
 
