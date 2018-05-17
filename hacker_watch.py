@@ -27,7 +27,7 @@ def is_username_found(markup, username):
     return False
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         sys.exit('\n[ERROR]: Please supply username to search for and number of seconds to repeat. Exiting.\n')
 
     SITE = 'https://news.ycombinator.com/news'
