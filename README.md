@@ -10,7 +10,7 @@ This will watch `news.ycombinator.com/news` (first page only), and save a screen
 Required args:
 
 - username (`str`)
-- time to retry in seconds (`str`)
+- time to retry in seconds (`float`)
 
 
 
