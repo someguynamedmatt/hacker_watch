@@ -5,7 +5,6 @@ import time
 from urllib import request as req
 from bs4 import BeautifulSoup as bs
 
-
 @contextlib.contextmanager
 def quitting(thing):
     yield thing
@@ -22,19 +21,19 @@ def get_site_markup(site):
     return markup
 
 def is_username_found(markup, username):
-    for a in markup.findAll('a'):
-        if a.text == username:
+    for a_tag in markup.findAll('a'):
+        if a_tag.text == username:
             return True
     return False
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) < 2:
-        sys.exit('\n[ERROR]: Please supply username to search for and number of seconds to reepeat. Exiting.\n')
+        sys.exit('\n[ERROR]: Please supply username to search for and number of seconds to repeat. Exiting.\n')
 
     SITE = 'https://news.ycombinator.com/news'
-    USERNAME = sys.argv[1]
+    USERNAME = str(sys.argv[1])
     REPEAT_TIME = float(sys.argv[2])
-    SAVE_LOCATION = "./proof.png"
+    SAVE_LOCATION = './proof.png'
 
     def run():
         markup = get_site_markup(SITE)
