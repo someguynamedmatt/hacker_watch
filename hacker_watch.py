@@ -41,6 +41,7 @@ if __name__ == '__main__':
             print('Username found!')
             initiate_webdriver(SITE, SAVE_LOCATION)
             sys.exit('Saved screenshot. My job here is done. Exiting\n')
+        print('Hmmm. I didn\'t see it. Lemme try again in ' + str(REPEAT_TIME) + ' seconds.')
 
     STARTTIME = time.time()
     while True:
