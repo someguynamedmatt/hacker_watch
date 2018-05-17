@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     def run():
         markup = get_site_markup(SITE)
-        if is_username_found(markup, USERNAME) is True:
+        if is_username_found(markup, USERNAME):
             print('Username found!')
             initiate_webdriver(SITE, SAVE_LOCATION)
             sys.exit('Saved screenshot. My job here is done. Exiting\n')
