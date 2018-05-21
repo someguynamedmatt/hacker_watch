@@ -1,4 +1,5 @@
 # Obsessively monitor HackerNews!
+> Please set the retry time responsibly. Don't spam the site.
 ---
 
 `python hacker_watch.py "myusername" 1200` // This example will search for `myusername` every 30 mins
